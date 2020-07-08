@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<style>
+* {
+	font-family: "Helvetica Neue LT",sans-serif;
+}
+
+input[type=text], select {
+	width: 30%;
+	padding: 12px 20px;
+	margin: 8px 0;
+	display: inline-block;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+input[type=submit] {
+	width: 30%;
+	background-color: Violet;
+	color: white;
+	padding: 14px 20px;
+	margin: 8px 0;
+	border: none;
+	border-radius: 4px;
+	cursor: pointer;
+	font-size: 150%;
+}
+
+#jibeComp {
+	color: #002642;
+	font-size: 120%;
+}
+
+#formCSS {
+	border-radius: 5px;
+	background-image: linear-gradient(to right, white, #f2f2f2, white);
+	padding: 20px;
+	margin-left: 300px;
+	margin-right: 300px;
+}
+
+h1 {
+	background: linear-gradient(135deg, #a700f7 50%, #dc00f7 100%);
+	padding: 1rem 100px;
+	margin-left: 50px;
+	margin-right: 50px;
+}
+
+#descrPanel {
+	text-align: center;
+	border: 10px inset Violet;
+	background-color: lightgray;
+	margin-top: 100px;
+	margin-bottom: 100px;
+	margin-left: 200px;
+	margin-right: 200px;
+	font-size: 120%;
+}
+
+#formData {
+	text-align: center;
+	margin-bottom: 100px;
+	margin-top: 50px;
+}
+
+.errors {
+	visibility: hidden;
+	text-shadow: 2px 2px 5px red;
+	font-weight: bold;
+}
+</style>
+
+<script>
+function validateForm() {
+  hideErrors();
+  var fn =document.getElementById("firstName").value;
+  var ln =document.getElementById("lastName").value;
+  var email =document.getElementById("email").value;
+  var pn =document.getElementById("phoneNumber").value;
+  var descr =document.getElementById("description").value;
+  var ok=true;
+  if(validateEmptyField(fn) == false) {
+	document.getElementById("errorFn").style.visibility="visible";
+	ok=false;
+  }
+  if(validateEmptyField(ln) == false) {
+	document.getElementById("errorLn").style.visibility="visible";
+	ok=false;
+}
+  if(validateEmail(email) == 2) {
+    document.getElementById("errorEmail").textContent="Please fill out this field!";
+	document.getElementById("errorEmail").style.visibility="visible";
+	ok=false;
+  }
+  else if(validateEmail(email) == false) {
+	document.getElementById("errorEmail").textContent="Invalid email!";
+	document.getElementById("errorEmail").style.visibility="visible";
+	ok=false;
+  }
+  if(validatePhoneNumber(pn) == 2) {
+	document.getElementById("errorPhoneNumber").style.visibility="visible";
+	ok=false;
+  }
+  else if(validatePhoneNumber(pn) == false) {
+	document.getElementById("errorPhoneNumber").textContent="Invalid phone number!";
+	document.getElementById("errorPhoneNumber").style.visibility="visible";
+	ok=false;
+  }
+  if(validateEmptyField(descr) == false) {
+	document.getElementById("errorDescription").style.visibility="visible";
+	ok=false;
+  }
+  return ok;
+}
+
+function hideErrors() {
+	document.getElementById("errorFn").style.visibility="hidden";
+	document.getElementById("errorLn").style.visibility="hidden";
+	document.getElementById("errorEmail").style.visibility="hidden";
+	document.getElementById("errorPhoneNumber").style.visibility="hidden";
+	document.getElementById("errorDescription").style.visibility="hidden";
+}
+
+function validateEmptyField(x) {
+	if(x=="") {
+		return false;
+	}
+}
+
+function validateEmail(x) {
+	if(validateEmptyField(x) == false) return 2;
+	return validateEmailRegex(x);
+}
+
+function validateEmailRegex(x) {
+	const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(x).toLowerCase());
+}
+
+function validatePhoneNumber(x) {
+	if(validateEmptyField(x) == false) return 2;
+	const re = /^[0-9]+$/;
+	return re.test(x);
+}
+</script>
+
+<title>Jibe - Home</title>
+
+<h1> 
+	<img src="logo.svg" height=100 width=100 style="vertical-align:text-top"> 
+	
+	<span id="jibeComp">Jibe Company
+	</span>
+	
+	<div style="text-align:right; font-size:80%;">
+		<a href="page2.html" style="color:#002642;">About Us</a> 
+	</div>
+</h1>
+</head>
+
+<body>
+	<div id="descrPanel">
+		<h2 style="font-size:150%;"> Smart software solutions that challenge the norms to put you first. </h2>
+		<p style="font-size:120%; color:#002642"> 
+		Jibe is more than a software house. <br>
+		We’re the place where software development meets everyday life.<br>
+		Our smart eBusiness solutions are carefully curated for real people and real experiences. 
+		</p>
+	</div>
+
+	<div id="formCSS">
+		<form id="formData" onsubmit="return validateForm()" action="success.html">
+
+			<div id="fn">
+				<label for="firstName" style="font-size:150%;">First name:</label><br>
+				<input type="text" id="firstName"><br>
+				<div id="errorFn" class="errors">
+					<label type="text">Please fill out this field!<br><br>
+				</div>
+			</div>
+  
+			<div id="ln">
+				<label for="lastName" style="font-size:150%;">Last name:</label><br>
+				<input type="text" id="lastName" ><br>
+				<div id="errorLn" class="errors">
+					<label type="text">Please fill out this field!<br><br>
+				</div>
+			</div>
+  
+			<label for="gender" style="font-size:150%;">Gender:</label><br>
+			<select id="gender" name="genders" style="text-align:center;">
+				<option value="male">Male</option>
+				<option value="female">Female</option>
+			</select><br><br>
+  
+			<div id="em">
+				<label for="email" style="font-size:150%;">Email:</label><br>
+				<input type="text" id="email"><br>
+				<div id="errorEmail" class="errors">
+					<label type="text">Please fill out this field!<br><br>
+				</div>
+			</div>
+  
+			<label for="address" style="font-size:150%;">Address:</label><br>
+			<input type="text" id="address"><br><br>
+  
+			<div id="pn">
+				<label for="phoneNumber" style="font-size:150%;">Phone number:</label><br>
+				<input type="text" id="phoneNumber"><br>
+				<div id="errorPhoneNumber" class="errors">
+					<label type="text">Please fill out this field!<br><br>
+				</div>
+			</div>
+  
+			<div id="descr">
+				<label for="description" style="font-size:150%;">Description:</label><br>
+				<textarea name="descr" id="description" rows="10" cols="50"></textarea><br>
+				<div id="errorDescription" class="errors">
+					<label type="text">Please fill out this field!<br><br>
+				</div>
+			</div>
+  
+			<input type="submit" value="Submit">
+		</form>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1080px" height="1080px" viewBox="0 0 1080 1080" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 57.1 (83088) - https://sketch.com -->
+    <title>Logo_BLW</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="61.7146985%" y1="0%" x2="38.2853015%" y2="102.627506%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#D8D8D8" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Logo_BLW" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <rect fill="#002642" x="0" y="0" width="1080" height="1080"></rect>
+        <g id="Group" transform="translate(275.000000, 183.000000)" fill="url(#linearGradient-1)">
+            <path d="M265.158621,-5.68434189e-14 C309.585168,-5.68434189e-14 345.6,36.0148323 345.6,80.4413793 L345.6,551.172414 C345.6,595.598961 309.585168,631.613793 265.158621,631.613793 C220.732074,631.613793 184.717241,595.598961 184.717241,551.172414 L184.717241,80.4413793 C184.717241,36.0148323 220.732074,-5.68434189e-14 265.158621,-5.68434189e-14 Z M79.92,713.991724 C35.7814028,713.991724 0,678.210321 0,634.071724 C0,589.933127 35.7814028,554.151724 79.92,554.151724 C124.058597,554.151724 159.84,589.933127 159.84,634.071724 C159.84,678.210321 124.058597,713.991724 79.92,713.991724 Z" id="Shape"></path>
+        </g>
+    </g>
+</svg>
